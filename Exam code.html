@@ -1,0 +1,123 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>State Election Voting System</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eaf2f8;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .container {
+            background-color: white;
+            width: 400px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        h1 {
+            color: darkblue;
+        }
+
+        .candidate {
+            background-color: #f2f2f2;
+            padding: 15px;
+            margin: 15px;
+            border-radius: 8px;
+        }
+
+        button {
+            background-color: green;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: darkgreen;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>STATE ELECTION 2026</h1>
+        <h3>Online Voting System</h3>
+
+        <h2>Select Your Candidate</h2>
+
+        <div class="candidate">
+            <input type="radio" name="candidate" value="Candidate A">
+            <label>Candidate A</label>
+        </div>
+
+        <div class="candidate">
+            <input type="radio" name="candidate" value="Candidate B">
+            <label>Candidate B</label>
+        </div>
+
+        <button onclick="vote()">CAST YOUR VOTE</button>
+
+        <h2>Voting Results</h2>
+
+        <p>Candidate A Votes: <span id="votesA">0</span></p>
+        <p>Candidate B Votes: <span id="votesB">0</span></p>
+
+        <h3 id="result"></h3>
+
+    </div>
+
+    <script>
+
+        let votesA = 0;
+        let votesB = 0;
+
+        function vote() {
+
+            let selected = document.querySelector(
+                'input[name="candidate"]:checked'
+            );
+
+            if (selected == null) {
+                alert("Please select a candidate!");
+                return;
+            }
+
+            if (selected.value == "Candidate A") {
+                votesA++;
+            }
+            else if (selected.value == "Candidate B") {
+                votesB++;
+            }
+
+            document.getElementById("votesA").innerHTML = votesA;
+            document.getElementById("votesB").innerHTML = votesB;
+
+            document.getElementById("result").innerHTML =
+                "Your vote has been submitted successfully!";
+
+            selected.checked = false;
+
+        }
+
+    </script>
+
+</body>
+</html>
+```
